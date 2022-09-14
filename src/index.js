@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+// Importing the Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import FitYouNavbar from "./fitYouNavbar";
+import Exercise from "./Exercises/Exercise";
+import WorkoutCreation from "./WorkoutCreation/WorkoutCreation";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <FitYouNavbar />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<App />} />
+        <Route path="/exercise" exact element={<Exercise />} />
+        <Route path="/workout" exact element={<WorkoutCreation />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

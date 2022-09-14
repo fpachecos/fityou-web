@@ -1,13 +1,107 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.main-navbar {
+  list-style-type: none;
+  display: flex;
+  padding: 18px 0 0 0px;
+  margin-bottom: 20px;
+  background-size: 400% 400%;
+  background-image: linear-gradient(
+    -45deg,
+    #1693a5,
+    #45b5c4,
+    #7ececa,
+    #45b5c4,
+    #1693a5
+  );
+  animation: 6s myGradient infinite;
+  box-shadow: 3px 3px 20px #c7ede8;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+@keyframes myGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  30% {
+    background-position: 30% 70%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  70% {
+    background-position: 70% 30%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main-navbar .nav-link,
+.navbar-text,
+.navbar-text a {
+  color: white !important;
+  font-weight: 500;
+}
+
+.main-navbar .navbar-text a {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+.mainlogo {
+  width: 90px;
+}
+
+.btn-primary {
+  background-color: #1693a5 !important;
+  border: #1693a5 !important;
+  box-shadow: 0px 3px 10px #1693a5;
+}
+
+.btn-primary:active {
+  background-color: #45b5c4 !important;
+  border: #45b5c4 !important;
+  box-shadow: 0px 0px 0px;
+}
+
+.btn-primary:hover {
+  background-color: #45b5c4 !important;
+  border: #45b5c4 !important;
+  box-shadow: 0px 3px 10px #45b5c4;
+}
+
+.btn-secondary {
+  background-color: #f28982eb !important;
+  border: #f28982eb !important;
+  box-shadow: 0px 3px 10px #f28982eb;
+  color: #311614eb !important;
+}
+
+.btn-secondary:active {
+  background-color: #f3a09aeb !important;
+  border: #f3a09aeb !important;
+  box-shadow: 0px 0px 0px;
+}
+
+.btn-secondary:hover {
+  background-color: #f3a09aeb !important;
+  border: #f3a09aeb !important;
+  box-shadow: 0px 3px 10px #f3a09aeb;
 }

@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
+import { useParams } from "react-router-dom";
 import WorkoutExerciseList from "./WorkoutExerciseList";
 
-function WorkoutCreation() {
+const WorkoutCreation = () => {
   const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState([]);
   const [workoutExerciseList, setWorkoutExerciseList] = useState([]);
   const [displayAlreadyHaveMsg, setDisplayAlreadyHaveMsg] = useState("none");
+  const { id } = useParams();
+
+  console.log(id);
 
   const fetchData = () => {
     fetch(process.env.REACT_APP_API_URL + process.env.REACT_APP_EXERCISES)
@@ -48,7 +52,7 @@ function WorkoutCreation() {
   const removeExerciseFromWorkout = (id) => {
     setWorkoutExerciseList((previousValue) => {
       return previousValue.filter((value) => {
-        return value.id != id;
+        return value.id !== id;
       });
     });
   };
@@ -86,6 +90,6 @@ function WorkoutCreation() {
       />
     </Container>
   );
-}
+};
 
 export default WorkoutCreation;

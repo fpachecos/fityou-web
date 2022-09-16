@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import FitYouNavbar from "./fitYouNavbar";
 import Exercise from "./Exercises/Exercise";
 import WorkoutCreation from "./WorkoutCreation/WorkoutCreation";
+import WorkoutList from "./Workout/WorkoutList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +19,12 @@ root.render(
       <Routes>
         <Route path="/" exact element={<App />} />
         <Route path="/exercise" exact element={<Exercise />} />
-        <Route path="/workout" exact element={<WorkoutCreation />} />
+        <Route
+          path="/workoutcreation/:id"
+          exact
+          element={<WorkoutCreation />}
+        />
+        <Route path="/workout" exact element={<WorkoutList />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

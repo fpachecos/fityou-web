@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import editimg from "../img/edit.png";
 
 const EditInline = (props) => {
-  const [newWorkoutNameValue, setNewWorkoutNameValue] = useState(props.text);
+  const text = useRef();
+  const [textValue, setText] = useState(props.text);
   const [isEdit, setIsEdit] = useState(false);
   const [validated, setValidated] = useState(false);
 
   const onChange = (event) => {
-    setNewWorkoutNameValue(event.target.value);
+    setText((prev) => {
+      return event.target.value;
+    });
   };
 
   const onEditHandle = () => {
@@ -26,7 +29,7 @@ const EditInline = (props) => {
     } else {
       props.onEdit(
         {
-          text: newWorkoutNameValue,
+          text: textValue,
         },
         props.id
       );
@@ -48,8 +51,9 @@ const EditInline = (props) => {
         <Form.Group className="mb-12">
           <Form.Control
             type="text"
-            id="newWorkoutName"
-            value={newWorkoutNameValue}
+            id="text"
+            ref={text}
+            defaultValue={props.text}
             onChange={onChange}
             style={{
               width: "80%",

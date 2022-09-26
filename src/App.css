@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.pageTitle {
+  text-align: center;
+}
+.pageTitle h2 {
+  border-bottom: 1px #282c34 solid !important;
+}

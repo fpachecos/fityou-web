@@ -112,6 +112,10 @@ const WorkoutList = (props) => {
 
   return (
     <Container>
+      <Row className="pageTitle">
+        <h2>Treinos</h2>
+      </Row>
+
       <Row>
         <Col className="d-grid gap-2">
           <Button variant="primary" size="sm" onClick={handleShow}>

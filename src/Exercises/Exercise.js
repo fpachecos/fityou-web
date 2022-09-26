@@ -75,6 +75,9 @@ function Exercise() {
 
   return (
     <Container>
+      <Row className="pageTitle">
+        <h2>Exercícios</h2>
+      </Row>
       <Row>
         <div className="d-grid gap-2">
           <Button variant="primary" size="sm" onClick={handleShow}>

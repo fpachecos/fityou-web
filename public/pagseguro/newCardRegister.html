@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <style>
+        .btn-primary {
+            background-color: #1693a5 !important;
+            border: #1693a5 !important;
+            box-shadow: 0px 3px 10px #1693a5;
+        }
+
+        .btn-primary:active {
+            background-color: #45b5c4 !important;
+            border: #45b5c4 !important;
+            box-shadow: 0px 0px 0px;
+        }
+
+        .btn-primary:hover {
+            background-color: #45b5c4 !important;
+            border: #45b5c4 !important;
+            box-shadow: 0px 3px 10px #45b5c4;
+        }
+        .pageTitle {
+            text-align: center;
+        }
+        .pageTitle h2 {
+            border-bottom: 1px #282c34 solid !important;
+        }
+
+        input{
+            margin-top: 3px;
+        }
+    </style>
+    <script src="https://assets.pagseguro.com.br/checkout-sdk-js/rc/dist/browser/pagseguro.min.js"></script>
+    <script>
+      function encryptCustomerCard() {
+        const holder = document.getElementById("holder").value;
+        const cardNumber = document.getElementById("cardNumber").value;
+        const month = document.getElementById("month").value;
+        const year = document.getElementById("year").value;
+        const secCode = document.getElementById("secCode").value;
+
+        var card = PagSeguro.encryptCard({
+          publicKey:
+            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr+ZqgD892U9/HXsa7XqBZUayPquAfh9xx4iwUbTSUAvTlmiXFQNTp0Bvt/5vK2FhMj39qSv1zi2OuBjvW38q1E374nzx6NNBL5JosV0+SDINTlCG0cmigHuBOyWzYmjgca+mtQu4WczCaApNaSuVqgb8u7Bd9GCOL4YJotvV5+81frlSwQXralhwRzGhj/A57CGPgGKiuPT+AOGmykIGEZsSD9RKkyoKIoc0OS8CPIzdBOtTQCIwrLn2FxI83Clcg55W8gkFSOS6rWNbG5qFZWMll6yl02HtunalHmUlRUL66YeGXdMDC2PuRcmZbGO5a/2tbVppW6mfSWG3NPRpgwIDAQAB",
+          holder: holder,
+          number: cardNumber,
+          expMonth: month,
+          expYear: year,
+          securityCode: secCode,
+        });
+        window.parent.location.href = "/pagamento?key=" + card.encryptedCard;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="pageTitle">
+        <h2>Cadastro de Cartão</h2>
+    </div>
+    <form>
+        <div style="width: 10em;">
+            <label>Nome do Portador:</label> &nbsp;
+        </div>
+        <div style="width: auto;">
+            <input type="text" id="holder"  style="width:60%;"></input>
+        </div>
+        <div style="width: 10em;">
+            <label>Número do Cartão:</label> &nbsp;
+        </div>
+        <div style="width: auto;">
+            <input type="text" id="cardNumber"></input>
+        </div>
+        <div style="width: 10em;">
+            <label>Mês de Vencimento:</label>
+        </div>
+        <div style="width: auto;">
+            <input type="text" min="1" max="12" value="1" id="month" maxlength="2" style="width:2em;"></input>
+        </div>
+        <div style="width: 10em;">
+            <label>Ano de Vencimento:</label>
+        </div>
+        <div style="width: auto;">
+            <input type="text" min="1900" id="year" maxlength="4"  style="width:4em;"></input>
+        </div>
+        <div style="width: 100%;">
+            <label>Código de Segurança:</label>
+        </div>
+        <div style="width: auto;">
+            <input type="text" id="secCode" maxlength="3" style="width:3em;"></input>
+        </div>
+    </form>
+    <br/>
+    <div class="d-grid gap-2 col">
+        <button onclick="encryptCustomerCard()" type="button" class="btn btn-primary btn-sm" style="color: white;">User este cartão</button>
+    </div>
+    
+  </body>
+</html>

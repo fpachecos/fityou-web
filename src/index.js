@@ -10,6 +10,7 @@ import FitYouNavbar from "./fitYouNavbar";
 import Exercise from "./Exercises/Exercise";
 import WorkoutCreation from "./WorkoutCreation/WorkoutCreation";
 import WorkoutList from "./Workout/WorkoutList";
+import Pagamento from "./Pagamento/Pagamento";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
           element={<WorkoutCreation />}
         />
         <Route path="/workout" exact element={<WorkoutList />} />
+        <Route path="/pagamento" exact element={<Pagamento />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

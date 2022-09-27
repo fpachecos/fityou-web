@@ -74,16 +74,19 @@ const WorkoutList = (props) => {
     window.location.href = "/workoutcreation/" + id;
   };
 
-  const onEditHandle = (newNameObj, id) => {
+  const onEditHandle = (editedObj) => {
     fetch(
-      process.env.REACT_APP_API_URL + process.env.REACT_APP_WORKOUTS + "/" + id,
+      process.env.REACT_APP_API_URL +
+        process.env.REACT_APP_WORKOUTS +
+        "/" +
+        editedObj.id,
       {
         method: "PATCH",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: newNameObj.text }),
+        body: JSON.stringify({ name: editedObj.text }),
       }
     )
       .then((response) => response.json())
@@ -92,8 +95,8 @@ const WorkoutList = (props) => {
           setWorkoutList((prevValue) => {
             let i = 0;
             while (i < prevValue.length) {
-              if (prevValue[i].id === id) {
-                prevValue[i].name = newNameObj.text;
+              if (prevValue[i].id === editedObj.id) {
+                prevValue[i].name = editedObj.text;
               }
               i++;
             }

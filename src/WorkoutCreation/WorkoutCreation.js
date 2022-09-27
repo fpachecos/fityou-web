@@ -86,14 +86,14 @@ const WorkoutCreation = () => {
     });
   };
 
-  const onEditHandle = (newNameObj, idWorkout) => {
+  const onEditHandle = (newNameObj) => {
     if (!newNameObj.text) return;
 
     fetch(
       process.env.REACT_APP_API_URL +
         process.env.REACT_APP_WORKOUTS +
         "/" +
-        idWorkout,
+        newNameObj.id,
       {
         method: "PATCH",
         headers: {
@@ -116,14 +116,14 @@ const WorkoutCreation = () => {
       });
   };
 
-  const onEditRestTimeHandle = (newRestTimeObj, idWorkout) => {
+  const onEditRestTimeHandle = (newRestTimeObj) => {
     if (!newRestTimeObj.text) return;
 
     fetch(
       process.env.REACT_APP_API_URL +
         process.env.REACT_APP_WORKOUTS +
         "/" +
-        idWorkout,
+        newRestTimeObj.id,
       {
         method: "PATCH",
         headers: {

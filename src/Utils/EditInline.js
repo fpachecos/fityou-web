@@ -27,12 +27,10 @@ const EditInline = (props) => {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      props.onEdit(
-        {
-          text: textValue,
-        },
-        props.id
-      );
+      props.onEdit({
+        id: props.id,
+        text: textValue,
+      });
       setValidated(false);
       setIsEdit(false);
     }

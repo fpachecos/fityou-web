@@ -19,7 +19,6 @@ function FitYouNavbar() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/exercise">Exercícios</Nav.Link>
             <Nav.Link href="/workout">Treinos</Nav.Link>
-            <Nav.Link href="/pagamento">Pagamento</Nav.Link>
             <Nav.Link href="/people">Alunos/as</Nav.Link>
           </Nav>
         </Navbar.Collapse>

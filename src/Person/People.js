@@ -37,14 +37,6 @@ const People = (props) => {
     }
   };
 
-  const onEditNameHandle = (newPersonNameObj) => {
-    console.log("método não implementado.");
-  };
-
-  const onEditPhoneHandle = (newPersonPhoneObj) => {
-    console.log("método não implementado.");
-  };
-
   const handleShow = () => setNewPersonVisible(true);
 
   const newPersonHideHandler = () => setNewPersonVisible(false);
@@ -70,6 +62,37 @@ const People = (props) => {
       });
   };
 
+  const chargeRequestHandle = (id) => {
+    var amount = window.prompt("Qual o valor?", "0,00");
+    if (amount != null && amount != "" && amount != "0,00") {
+      fetch(
+        process.env.REACT_APP_API_URL +
+          process.env.REACT_APP_PAYMENTS_INTENTION,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            personId: id,
+            grossAmount: amount,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.isSuccess) {
+            window.location.href =
+              process.env.REACT_APP_WEB_URL + "pagamento?id=" + data.id;
+          } else {
+            alert(data.message);
+            console.log(data.technicalMessage);
+          }
+        });
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -87,7 +110,11 @@ const People = (props) => {
       </Row>
       <Row>&nbsp;</Row>
       <Row>
-        <PeopleList people={peopleList} onRemove={removeHandle}></PeopleList>
+        <PeopleList
+          people={peopleList}
+          onRemove={removeHandle}
+          onChargeRequest={chargeRequestHandle}
+        ></PeopleList>
       </Row>
       <NewPersonModal
         visible={newPersonVisible}

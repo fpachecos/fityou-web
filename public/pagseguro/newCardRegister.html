@@ -159,9 +159,10 @@
               identificationNumber,
               identificationType,
             } = cardForm.getCardFormData();
-
+            console.log(window.location.protocol);
             fetch(
-              "https://" +
+              window.location.protocol +
+                "//" +
                 new URLSearchParams(window.location.search).get("context") +
                 "/mercadopago/pay",
               {
